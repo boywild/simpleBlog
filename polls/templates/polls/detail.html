@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.css' %}">
+</head>
+<body>
+<h1>{{ question.question_text }}</h1>
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+        <div class="radio">
+            <label>
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            </label>
+        </div>
+    {% endfor %}
+
+     <button type="submit"  class="btn btn-primary">投票</button>
+</form>
+</body>
+</html>

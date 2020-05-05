@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/bootstrap.css' %}">
+</head>
+<body>
+<h1>{{ request.session.user_name }}! 欢迎回来！</h1>
+<p>
+    <a href="/logout/">登出</a>
+</p>
+<script type="application/javascript" src="{% static 'login/js/jquery.js' %}"></script>
+<script type="application/javascript" src="{% static 'login/js/popper.js' %}"></script>
+<script type="application/javascript" src="{% static 'login/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

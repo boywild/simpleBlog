@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>results</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.css' %}">
+</head>
+<body>
+<h1>{{ question.question_text }}</h1>
+
+
+<ul class="list-group">
+    {% for choice in question.choice_set.all %}
+        <li class="list-group-item">
+            <span class="badge">{{ choice.votes }} vote{{ choice.votes|pluralize }}</span>
+            {{ choice.choice_text }}
+        </li>
+    {% endfor %}
+</ul>
+<a class="btn btn-primary" href="{% url 'polls:detail' question.id %}" role="button">重新投票</a>
+</body>
+</html>
