@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>确认</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/register.css' %}">
+</head>
+<body>
+<h1 style="margin-left: 100px;">{{ message }}</h1>
+
+<script>
+    window.setTimeout("window.location='/login/'", 2000);
+</script>
+
+
+<script type="application/javascript" src="{% static 'login/js/jquery.js' %}"></script>
+<script type="application/javascript" src="{% static 'login/js/popper.js' %}"></script>
+<script type="application/javascript" src="{% static 'login/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
