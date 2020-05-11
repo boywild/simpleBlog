@@ -145,12 +145,9 @@ def user_confirm(request):
     except:
         message = '无效请求'
         return render(request, 'login/confirm.html', locals())
-    c_time = confirm.c_time
+    c_time = confirm.c_time.replace(tzinfo=None)
     now = datetime.datetime.now()
-    print(c_time)
-    print(now)
-    print(datetime.timedelta(settings.CONFIRM_DAYS))
-    if now > c_time + datetime.timedelta(settings.CONFIRM_DAYS):
+    if now.__gt__(c_time + datetime.timedelta(days=settings.CONFIRM_DAYS)):
         message = '您的邮件已经过期，请重新注册！！'
         confirm.user.delete()
         return render(request, 'login/confirm.html', locals())
